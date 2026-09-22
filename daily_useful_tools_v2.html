@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Useful Tools | Free Online Tools</title>
+<meta name="description" content="Free everyday calculators and useful online tools.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#182033}
+header{background:linear-gradient(135deg,#4f46e5,#8b5cf6);color:#fff;text-align:center;padding:42px 18px}
+header h1{margin:0 0 9px;font-size:36px}header p{margin:0;font-size:17px}
+main{max-width:1050px;margin:28px auto;padding:0 16px}.search{width:100%;padding:14px 16px;border:1px solid #d9deea;border-radius:14px;font-size:16px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}.card{background:#fff;border-radius:18px;padding:21px;box-shadow:0 6px 22px rgba(20,30,60,.08)}
+.card h2{margin:0 0 13px;font-size:20px}input,select,button{width:100%;padding:12px;margin:6px 0;border:1px solid #d9deea;border-radius:10px;font-size:15px}button{background:#5b4bdb;color:#fff;border:0;cursor:pointer;font-weight:700}.result{margin-top:9px;font-weight:700;min-height:22px}.small{color:#697386;font-size:13px}
+.follow{margin:30px 0;background:linear-gradient(135deg,#111827,#312e81);color:#fff;border-radius:22px;padding:30px 20px;text-align:center}.follow a,.share{display:inline-block;margin:7px 5px 0;background:#e1306c;color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:700;border:0}.share{background:#5b4bdb}
+footer{text-align:center;padding:25px;color:#697386;font-size:13px}.hidden{display:none}
+</style>
+</head>
+<body>
+<header><h1>✨ Daily Useful Tools</h1><p>Free, fast and simple tools for everyday use.</p></header>
+<main>
+<input class="search" id="search" placeholder="🔎 Search a tool..." oninput="filterTools()">
+<div class="grid" id="tools">
+
+<section class="card tool"><h2>🧮 Calculator</h2><input id="calc" placeholder="Example: 25*4+10"><button onclick="calculate()">Calculate</button><div id="calcResult" class="result"></div></section>
+<section class="card tool"><h2>🎂 Age Calculator</h2><input id="dob" type="date"><button onclick="age()">Calculate Age</button><div id="ageResult" class="result"></div></section>
+<section class="card tool"><h2>💯 Percentage</h2><input id="part" type="number" placeholder="Obtained / Part"><input id="total" type="number" placeholder="Total"><button onclick="percentage()">Calculate %</button><div id="pctResult" class="result"></div></section>
+<section class="card tool"><h2>📏 Length Converter</h2><input id="len" type="number" placeholder="Value"><select id="lenUnit"><option value="kmmi">km → miles</option><option value="mft">metres → feet</option><option value="inm">inches → metres</option></select><button onclick="lengthConvert()">Convert</button><div id="lenResult" class="result"></div></section>
+<section class="card tool"><h2>⚖️ Weight Converter</h2><input id="weight" type="number" placeholder="Value"><select id="weightUnit"><option value="kgp">kg → pounds</option><option value="lbk">pounds → kg</option><option value="gkg">grams → kg</option></select><button onclick="weightConvert()">Convert</button><div id="weightResult" class="result"></div></section>
+<section class="card tool"><h2>🌡️ Temperature</h2><input id="temp" type="number" placeholder="Temperature"><select id="tempUnit"><option value="cf">Celsius → Fahrenheit</option><option value="fc">Fahrenheit → Celsius</option></select><button onclick="tempConvert()">Convert</button><div id="tempResult" class="result"></div></section>
+<section class="card tool"><h2>📅 Days Between Dates</h2><input id="date1" type="date"><input id="date2" type="date"><button onclick="daysBetween()">Calculate</button><div id="daysResult" class="result"></div></section>
+<section class="card tool"><h2>🕐 Hours → Minutes</h2><input id="hours" type="number" placeholder="Hours"><button onclick="hourConvert()">Convert</button><div id="hourResult" class="result"></div></section>
+<section class="card tool"><h2>💰 Discount Calculator</h2><input id="price" type="number" placeholder="Original price"><input id="discount" type="number" placeholder="Discount %"><button onclick="discountCalc()">Calculate</button><div id="discountResult" class="result"></div></section>
+<section class="card tool"><h2>💵 Tip Calculator</h2><input id="bill" type="number" placeholder="Bill amount"><input id="tip" type="number" placeholder="Tip %"><button onclick="tipCalc()">Calculate</button><div id="tipResult" class="result"></div></section>
+<section class="card tool"><h2>📐 Triangle Area</h2><input id="base" type="number" placeholder="Base"><input id="height" type="number" placeholder="Height"><button onclick="triangle()">Calculate</button><div id="triangleResult" class="result"></div></section>
+<section class="card tool"><h2>🔢 Average Calculator</h2><input id="numbers" placeholder="Example: 10, 20, 30, 40"><button onclick="average()">Calculate</button><div id="avgResult" class="result"></div></section>
+<section class="card tool"><h2>📊 Simple Ratio</h2><input id="r1" type="number" placeholder="First number"><input id="r2" type="number" placeholder="Second number"><button onclick="ratio()">Simplify</button><div id="ratioResult" class="result"></div></section>
+<section class="card tool"><h2>🧮 BMI Calculator</h2><input id="bmiWeight" type="number" placeholder="Weight (kg)"><input id="bmiHeight" type="number" placeholder="Height (cm)"><button onclick="bmi()">Calculate BMI</button><div id="bmiResult" class="result"></div><p class="small">For general information only.</p></section>
+</div>
+
+<div class="follow"><h2>❤️ Like these free tools?</h2><p>Follow <strong>@momin_manzoor_13</strong> on Instagram for more useful content and updates.</p>
+<a href="https://www.instagram.com/momin_manzoor_13/" target="_blank" rel="noopener">📸 Follow on Instagram</a>
+<button class="share" onclick="shareSite()">📤 Share this website</button><p id="shareResult" class="small"></p></div>
+</main>
+<footer>© 2026 Daily Useful Tools • Free to use</footer>
+
+<script>
+const N=id=>Number(document.getElementById(id).value);
+function calculate(){let s=document.getElementById('calc').value.trim(),o=document.getElementById('calcResult');if(!/^[0-9+*/().%\\s-]+$/.test(s)){o.textContent='Enter a valid calculation.';return}try{o.textContent='Answer: '+Function('"use strict";return ('+s+')')()}catch(e){o.textContent='Invalid calculation.'}}
+function age(){let d=new Date(document.getElementById('dob').value),n=new Date(),o=document.getElementById('ageResult');if(isNaN(d)){o.textContent='Choose your birth date.';return}let y=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()==d.getMonth()&&n.getDate()<d.getDate()))y--;o.textContent=y>=0?'Age: '+y+' years':'Invalid date.'}
+function percentage(){let t=N('total');document.getElementById('pctResult').textContent=t>0?'Percentage: '+(N('part')/t*100).toFixed(2)+'%':'Enter a valid total.'}
+function lengthConvert(){let v=N('len'),u=document.getElementById('lenUnit').value,r,l;if(u==='kmmi'){r=v*.621371;l='miles'}else if(u==='mft'){r=v*3.28084;l='feet'}else{r=v*.0254;l='metres'}document.getElementById('lenResult').textContent='Result: '+r.toFixed(4)+' '+l}
+function weightConvert(){let v=N('weight'),u=document.getElementById('weightUnit').value,r,l;if(u==='kgp'){r=v*2.20462;l='pounds'}else if(u==='lbk'){r=v*.453592;l='kg'}else{r=v/1000;l='kg'}document.getElementById('weightResult').textContent='Result: '+r.toFixed(3)+' '+l}
+function tempConvert(){let v=N('temp'),u=document.getElementById('tempUnit').value,r=u==='cf'?v*9/5+32:(v-32)*5/9;document.getElementById('tempResult').textContent='Result: '+r.toFixed(2)+'°'}
+function daysBetween(){let a=new Date(document.getElementById('date1').value),b=new Date(document.getElementById('date2').value);document.getElementById('daysResult').textContent=isNaN(a)||isNaN(b)?'Choose both dates.':'Difference: '+Math.abs(Math.round((b-a)/86400000))+' days'}
+function hourConvert(){document.getElementById('hourResult').textContent='Minutes: '+N('hours')*60}
+function discountCalc(){let p=N('price'),d=N('discount'),s=p*d/100;document.getElementById('discountResult').textContent='Final price: '+(p-s).toFixed(2)+' (Save '+s.toFixed(2)+')'}
+function tipCalc(){let b=N('bill'),t=N('tip'),x=b*t/100;document.getElementById('tipResult').textContent='Tip: '+x.toFixed(2)+' | Total: '+(b+x).toFixed(2)}
+function triangle(){document.getElementById('triangleResult').textContent='Area: '+(N('base')*N('height')/2).toFixed(2)+' square units'}
+function average(){let a=document.getElementById('numbers').value.split(',').map(Number).filter(Number.isFinite);document.getElementById('avgResult').textContent=a.length?'Average: '+(a.reduce((x,y)=>x+y,0)/a.length).toFixed(2):'Enter numbers separated by commas.'}
+function gcd(a,b){while(b){[a,b]=[b,a%b]}return Math.abs(a)}
+function ratio(){let a=N('r1'),b=N('r2');document.getElementById('ratioResult').textContent=a&&b?'Simplified ratio: '+a/gcd(a,b)+':'+b/gcd(a,b):'Enter two numbers.'}
+function bmi(){let w=N('bmiWeight'),h=N('bmiHeight')/100;document.getElementById('bmiResult').textContent=w>0&&h>0?'BMI: '+(w/(h*h)).toFixed(1):'Enter valid values.'}
+function filterTools(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('hidden',!x.innerText.toLowerCase().includes(q)))}
+async function shareSite(){let d={title:'Daily Useful Tools',text:'Try these free everyday tools!',url:location.href},o=document.getElementById('shareResult');try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(location.href);o.textContent='Website link copied!'}}catch(e){}}
+</script>
+</body></html>
