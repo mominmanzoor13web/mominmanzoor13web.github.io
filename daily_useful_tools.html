@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Useful Tools</title>
+<meta name="description" content="Free, simple everyday calculators and useful tools.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#182033}
+header{background:linear-gradient(135deg,#5b4bdb,#8b5cf6);color:white;padding:42px 20px;text-align:center}
+header h1{margin:0 0 10px;font-size:36px}
+header p{margin:0;font-size:17px;opacity:.95}
+.container{max-width:1000px;margin:28px auto;padding:0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:white;border-radius:18px;padding:22px;box-shadow:0 6px 22px rgba(20,30,60,.08)}
+.card h2{margin-top:0;font-size:21px}
+input,select,button{width:100%;padding:12px;margin:7px 0;border:1px solid #d9deea;border-radius:10px;font-size:15px}
+button{background:#5b4bdb;color:white;border:0;cursor:pointer;font-weight:700}
+.result{margin-top:10px;font-weight:700;min-height:22px}
+.follow{margin:30px 0;background:#111827;color:white;border-radius:20px;padding:28px;text-align:center}
+.follow a{display:inline-block;margin-top:12px;background:#e1306c;color:white;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:700}
+footer{text-align:center;padding:25px;color:#697386;font-size:13px}
+.small{color:#697386;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>✨ Daily Useful Tools</h1>
+<p>Free, fast and simple tools for everyday use.</p>
+</header>
+
+<div class="container">
+<div class="grid">
+
+<section class="card">
+<h2>🧮 Calculator</h2>
+<input id="calc" placeholder="Example: 25*4+10">
+<button onclick="calculate()">Calculate</button>
+<div id="calcResult" class="result"></div>
+<p class="small">Use + − * / and parentheses.</p>
+</section>
+
+<section class="card">
+<h2>📏 Unit Converter</h2>
+<input id="value" type="number" placeholder="Enter value">
+<select id="unit">
+<option value="kmmi">Kilometres → Miles</option>
+<option value="mft">Metres → Feet</option>
+<option value="kgp">Kilograms → Pounds</option>
+<option value="cp">Celsius → Fahrenheit</option>
+</select>
+<button onclick="convert()">Convert</button>
+<div id="convResult" class="result"></div>
+</section>
+
+<section class="card">
+<h2>🎂 Age Calculator</h2>
+<input id="dob" type="date">
+<button onclick="age()">Calculate Age</button>
+<div id="ageResult" class="result"></div>
+</section>
+
+<section class="card">
+<h2>💯 Percentage Calculator</h2>
+<input id="part" type="number" placeholder="Obtained / Part">
+<input id="total" type="number" placeholder="Total">
+<button onclick="percentage()">Calculate %</button>
+<div id="pctResult" class="result"></div>
+</section>
+
+</div>
+
+<div class="follow">
+<h2>❤️ Enjoyed the tools?</h2>
+<p>Follow me on Instagram for more useful content and updates.</p>
+<a href="https://www.instagram.com/momin_manzoor_13/" target="_blank" rel="noopener">
+Follow @momin_manzoor_13
+</a>
+</div>
+</div>
+
+<footer>© 2026 Daily Useful Tools • Made for everyday use</footer>
+
+<script>
+function calculate(){
+ const s=document.getElementById('calc').value.trim();
+ if(!/^[0-9+*/().%\\s-]+$/.test(s)){document.getElementById('calcResult').textContent='Please enter a valid calculation.';return;}
+ try{document.getElementById('calcResult').textContent='Answer: '+Function('"use strict";return ('+s+')')();}
+ catch(e){document.getElementById('calcResult').textContent='Invalid calculation.';}
+}
+function convert(){
+ const v=Number(document.getElementById('value').value),u=document.getElementById('unit').value;
+ if(!Number.isFinite(v)){document.getElementById('convResult').textContent='Enter a number.';return;}
+ let r,label;
+ if(u==='kmmi'){r=v*0.621371;label='miles';}
+ if(u==='mft'){r=v*3.28084;label='feet';}
+ if(u==='kgp'){r=v*2.20462;label='pounds';}
+ if(u==='cp'){r=v*9/5+32;label='°F';}
+ document.getElementById('convResult').textContent=`Result: ${r.toFixed(2)} ${label}`;
+}
+function age(){
+ const d=new Date(document.getElementById('dob').value), now=new Date();
+ if(isNaN(d)){document.getElementById('ageResult').textContent='Choose your date of birth.';return;}
+ let years=now.getFullYear()-d.getFullYear();
+ const m=now.getMonth()-d.getMonth();
+ if(m<0 || (m===0 && now.getDate()<d.getDate())) years--;
+ document.getElementById('ageResult').textContent=years>=0?'Age: '+years+' years':'Invalid date.';
+}
+function percentage(){
+ const p=Number(document.getElementById('part').value),t=Number(document.getElementById('total').value);
+ document.getElementById('pctResult').textContent=t>0?'Percentage: '+((p/t)*100).toFixed(2)+'%':'Enter a valid total.';
+}
+</script>
+</body>
+</html>
